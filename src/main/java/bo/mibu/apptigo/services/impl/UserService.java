@@ -11,27 +11,28 @@ import java.util.ArrayList;
 
 @Service
 public class UserService implements IUserService {
+
     @Autowired
     private IUserRepository userRepository;
 
     @Override
-    public ArrayList<UserModel> getUsers(){
+    public ArrayList<UserModel> getUsers() {
         return (ArrayList<UserModel>) this.userRepository.findAll();
     }
 
     @Override
-    public UserModel saveUser(UserModel user){
+    public UserModel saveUser(UserModel user) {
         return this.userRepository.save(user);
     }
 
     @Override
-    public UserModel getById(Long id){
+    public UserModel getById(Long id) {
         return this.userRepository.findOne(id);
     }
 
     @Transactional
     @Override
-    public UserModel updateUser(UserModel request, Long id){
+    public UserModel updateUser(UserModel request, Long id) {
         UserModel user = this.userRepository.findOne(id);
         user.setFullname(request.getFullname());
         user.setEmail(request.getEmail());
@@ -41,13 +42,14 @@ public class UserService implements IUserService {
 
         return user;
     }
+
     @Override
-    public Boolean deleteUser(Long id){
+    public Boolean deleteUser(Long id) {
         try {
             this.userRepository.delete(id);
             return true;
-        }catch (Exception e){
-            return  false;
+        } catch (Exception e) {
+            return false;
         }
     }
 
