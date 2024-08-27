@@ -1,17 +1,19 @@
 package bo.mibu.apptigo.services;
 
 import bo.mibu.apptigo.models.UserModel;
+import bo.mibu.apptigo.services.dto.UserRequestDto;
+import bo.mibu.apptigo.services.dto.UserResponseDto;
 
 import java.util.ArrayList;
 
 public interface IUserService {
-    ArrayList<UserModel> getUsers();
+    ArrayList<UserResponseDto> getUsers();
 
-    UserModel saveUser(UserModel user);
+    UserResponseDto saveUser(UserRequestDto user);
 
-    UserModel getById(Long id);
+    UserResponseDto getById(Long id);
 
-    UserModel updateUser(UserModel request, Long id);
+    UserResponseDto updateUser(UserRequestDto request, Long id);
 
     Boolean deleteUser(Long id);
 }
